@@ -1,2 +1,2 @@
 # Skoodle
-Skoodle.me
+skoodle.me
