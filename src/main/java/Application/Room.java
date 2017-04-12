@@ -11,21 +11,16 @@ import javax.persistence.Id;
 
 @Entity
 public class Room {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     private String topic;
     private long maxPlayers;
-    private long[] playersIds;
+    private long[] playerIds;
 
-    public String getTopic() {
-        return topic;
-    }
-
-    public void setTopic(String topic) {
-        this.topic = topic;
+    public long getId() {
+        return id;
     }
 
     public long getMaxPlayers() {
@@ -36,7 +31,15 @@ public class Room {
         this.maxPlayers = maxPlayers;
     }
 
-    public long[] getPlayersIds() {
-        return playersIds;
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public long[] getPlayerIds() {
+        return playerIds;
     }
 }
