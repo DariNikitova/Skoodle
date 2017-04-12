@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Skoodle.iml" filepath="$PROJECT_DIR$/.idea/modules/Skoodle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Skoodle_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Skoodle_main.iml" group="Skoodle" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Skoodle_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Skoodle_test.iml" group="Skoodle" />
+    </modules>
+  </component>
+</project>
