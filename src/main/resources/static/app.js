@@ -12,20 +12,15 @@ function setConnected(connected) {
     $("#greetings").html("");
 }
 
+
 window.onload = function connect() {
     var socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/greetings', function (greeting) {
-//            console.log(JSON.parse(greeting.body)[0]);
-            console.log("What is this ffs");
-            rooms = JSON.parse(greeting.body);
-            console.log("ROOMS LENGTH " + rooms.length)
-            for(i = 0; i < rooms.length; i++) {
-                showRoom(rooms[i])
-            }
+        stompClient.subscribe('/topic/greetings', function (room) {
+            showRoom(JSON.parse(room.body));
         });
     });
 }
@@ -40,11 +35,11 @@ window.onload = function connect() {
 //}
 
 function sendName() {
-    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+    stompClient.send("/app/hello", {}, JSON.stringify({'maxPlayers': $("#maxPlayers").val()}));
 }
 
 function showRoom(room) {
-      $("#greetings").append("<tr><td>" + room.id + room.maxPlayers + "</td></tr>");
+      $("#greetings").append("<tr><td>" + room.id + " " + room.maxPlayers + "</td></tr>");
 }
 
 
@@ -58,3 +53,15 @@ $(function () {
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendName(); });
 });
+
+
+// Ask tisho about the Rest thing cause you can't still deal with it.
+//window.onload = function() {
+//    $.ajax({
+//        'utl': '/',
+//        'type': 'GET',
+//        'success' : function(data) {
+//            alert("DATA REQUESTEd!")
+//        }
+//    })
+//}

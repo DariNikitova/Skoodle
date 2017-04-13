@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,14 +28,24 @@ public class LobbyController {
 //        return room;
 //    }
 
-//    @MessageMapping("/hello")
-//    @SendTo("/topic/greetings")
-//    public Room getRooms(Object somethinf) throws  Exception{
-//        return new Room();
-//    }
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
-    public List<Room> getRooms() throws  Exception{
-        return roomService.findAll();
+    public Room getRooms(CreateRoom roomParams) throws  Exception{
+        Room r = new Room();
+        System.out.println("===================================================");
+        System.out.println("===================================================");
+        System.out.println("===================================================");
+        System.out.println(roomParams.getMaxPlayers());
+        System.out.println("===================================================");
+        System.out.println("===================================================");
+        r.setMaxPlayers(roomParams.getMaxPlayers());
+        return r;
     }
+
+
+//    @RequestMapping("/")
+//    public List<Room> getRooms() throws  Exception{
+//        return roomService.findAll();
+//    }
+
 }
