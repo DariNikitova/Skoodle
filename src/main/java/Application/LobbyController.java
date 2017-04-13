@@ -32,13 +32,8 @@ public class LobbyController {
     @SendTo("/topic/greetings")
     public Room getRooms(CreateRoom roomParams) throws  Exception{
         Room r = new Room();
-        System.out.println("===================================================");
-        System.out.println("===================================================");
-        System.out.println("===================================================");
-        System.out.println(roomParams.getMaxPlayers());
-        System.out.println("===================================================");
-        System.out.println("===================================================");
         r.setMaxPlayers(roomParams.getMaxPlayers());
+        roomService.saveRoom(r);
         return r;
     }
 
