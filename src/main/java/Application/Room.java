@@ -1,9 +1,6 @@
 package Application;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by ivan on 12.4.2017 г..
@@ -15,7 +12,9 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String topic;
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private Topic topic;
     private long maxPlayers;
     private long[] playerIds;
 
@@ -31,11 +30,11 @@ public class Room {
         this.maxPlayers = maxPlayers;
     }
 
-    public String getTopic() {
+    public Topic getTopic() {
         return topic;
     }
 
-    public void setTopic(String topic) {
+    public void setTopic(Topic topic) {
         this.topic = topic;
     }
 
