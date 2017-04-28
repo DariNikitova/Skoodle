@@ -8,6 +8,10 @@
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script src="/application.js"></script>
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 </head>
 <body>
 <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
@@ -17,7 +21,7 @@
         <div class="col-md-6">
             <form class="form-inline">
                 <div class="form-group">
-                    <label for="name">New Room Max Players</label>
+                    <label for="name">Create new room with Max Players</label>
                     <input type="text" id="maxPlayers" class="form-control" placeholder="Number from 3 to 6">
                 </div>
                 <button id="send" class="btn btn-default" type="submit">Send</button>
@@ -26,13 +30,46 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <table id="conversation" class="table table-striped">
+            <table id="conversation" class="table table-striped striped">
                 <thead>
                 <tr>
                     <th>Rooms</th>
                 </tr>
+				<tr class="card-panel cyan lighten-3">
+					<th class="filter-room">
+						Roomname
+					</th>
+					
+					<th class="filter-players">
+						Players
+					</th>
+					<th class="filter-private">
+						Private
+					</th>
+					<th class="filter-rounds">
+						Rounds
+					</th>
+				</tr>
                 </thead>
+				
                 <tbody id="greetings">
+					<tr>
+						<td>nqkvo ime na roomcheto</td>
+						<td>2/3</td>
+						<td>
+							<i></i>
+						</td>
+						<td>15</td>
+					</tr>
+					<tr>
+						<td>nqkvo ime na roomcheto</td>
+						<td>2/5</td>		
+						<td>
+						<i></i>
+						</td>
+						<td>20</td>
+					</tr>
+
                 </tbody>
             </table>
         </div>
