@@ -18,8 +18,6 @@ jQuery.ajax({
             contentType: 'application/json; charset=utf-8',
             success: function(resultData) {
                 for(i = 0; i < resultData.length; i++) {
-                    console.log("THIS IS THE DATA")
-                    console.log(resultData[i])
                     showRoom(resultData[i])
                 }
             },
@@ -30,19 +28,19 @@ jQuery.ajax({
         });
 
 window.onload = function connect() {
-    var socket = new SockJS('/gs-guide-websocket');
+    var socket = new SockJS('/socket-end');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/greetings', function (room) {
+        stompClient.subscribe('/rest/add-room', function (room) {
             showRoom(JSON.parse(room.body));
         });
     });
 }
 
 function sendName() {
-    stompClient.send("/app/hello", {}, JSON.stringify({'maxPlayers': $("#maxPlayers").val()}));
+    stompClient.send("/app/add-room", {}, JSON.stringify({'maxPlayers': $("#maxPlayers").val()}));
 }
 
 function showRoom(room) {
